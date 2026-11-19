@@ -41,7 +41,8 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter{
         String requestPath = request.getServletPath();
 
         // Authentication APIs do not require JWT
-        if (requestPath.contains("/pdms/v1/auth")|| requestPath.contains("/swagger-ui")
+        if (requestPath.contains("/pdms/v1/auth") || requestPath.contains("/pdms/v1/milestone-status")
+        		|| requestPath.contains("/swagger-ui")
         		|| requestPath.contains("/pdms/v1/swagger-ui/index.html")
         		|| requestPath.contains("/v3/api-docs")
                 || requestPath.contains("/swagger-ui.html")) {

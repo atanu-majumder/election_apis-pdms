@@ -37,7 +37,8 @@ public class SecurityConfig {
             		.dispatcherTypeMatchers(DispatcherType.ERROR).permitAll()
                 // Login APIs
                 .requestMatchers(
-                    "/pdms/v1/auth/**"
+                    "/pdms/v1/auth/**",
+                    "/pdms/v1/milestone-status/**"
                 ).permitAll()
 
                 // Swagger
