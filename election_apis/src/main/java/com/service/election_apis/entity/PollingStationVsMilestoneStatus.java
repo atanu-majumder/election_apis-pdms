@@ -20,7 +20,28 @@ public class PollingStationVsMilestoneStatus {
 	    @Id
 	    @Column(name = "polling_station_id", nullable = false)
 	    private Integer pollingStationId;
+	    
+	    @Column(name="polling_station_name")
+	    private String pollingStationName;
 
+	    @Column(name = "district_id")
+	    private Integer districtId;
+
+	    @Column(name = "district_name")
+	    private String districtName;
+
+	    @Column(name = "block_id")
+	    private Integer blockId;
+
+	    @Column(name = "block_name")
+	    private String blockName;
+
+	    @Column(name = "ward_id")
+	    private Integer wardId;
+
+	    @Column(name = "ward_name")
+	    private String wardName;
+	    
 	    @Column(name = "milestone_1")
 	    private Boolean milestone1;
 
@@ -89,7 +110,63 @@ public class PollingStationVsMilestoneStatus {
 	        this.pollingStationId = pollingStationId;
 	    }
 
-	    public Boolean getMilestone1() {
+	    public String getPollingStationName() {
+			return pollingStationName;
+		}
+
+		public void setPollingStationName(String pollingStationName) {
+			this.pollingStationName = pollingStationName;
+		}
+
+		public Integer getDistrictId() {
+			return districtId;
+		}
+
+		public void setDistrictId(Integer districtId) {
+			this.districtId = districtId;
+		}
+
+		public String getDistrictName() {
+			return districtName;
+		}
+
+		public void setDistrictName(String districtName) {
+			this.districtName = districtName;
+		}
+
+		public Integer getBlockId() {
+			return blockId;
+		}
+
+		public void setBlockId(Integer blockId) {
+			this.blockId = blockId;
+		}
+
+		public String getBlockName() {
+			return blockName;
+		}
+
+		public void setBlockName(String blockName) {
+			this.blockName = blockName;
+		}
+
+		public Integer getWardId() {
+			return wardId;
+		}
+
+		public void setWardId(Integer wardId) {
+			this.wardId = wardId;
+		}
+
+		public String getWardName() {
+			return wardName;
+		}
+
+		public void setWardName(String wardName) {
+			this.wardName = wardName;
+		}
+
+		public Boolean getMilestone1() {
 	        return milestone1;
 	    }
 
