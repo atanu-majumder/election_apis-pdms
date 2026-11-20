@@ -15,7 +15,6 @@ import tools.jackson.databind.JsonNode;
 @Table(name = "polling_station_vs_milestone_status", schema = "pdms")
 
 public class PollingStationVsMilestoneStatus {
-
 	
 	    @Id
 	    @Column(name = "polling_station_id", nullable = false)
