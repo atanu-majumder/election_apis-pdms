@@ -97,6 +97,14 @@ public class PollingStationVsMilestoneStatus {
 	    @JdbcTypeCode(SqlTypes.JSON)
 	    @Column(name = "milestone_17", columnDefinition = "json")
 	    private JsonNode milestone17;
+	    
+	    @JdbcTypeCode(SqlTypes.JSON)
+	    @Column(name = "milestone_18", columnDefinition = "json")
+	    private JsonNode milestone18;
+	    
+	    @JdbcTypeCode(SqlTypes.JSON)
+	    @Column(name = "milestone_19", columnDefinition = "json")
+	    private JsonNode milestone19;
 
 	    public PollingStationVsMilestoneStatus() {
 	    }
@@ -292,4 +300,22 @@ public class PollingStationVsMilestoneStatus {
 	    public void setMilestone17(JsonNode milestone17) {
 	        this.milestone17 = milestone17;
 	    }
+
+		public JsonNode getMilestone18() {
+			return milestone18;
+		}
+
+		public void setMilestone18(JsonNode milestone18) {
+			this.milestone18 = milestone18;
+		}
+
+		public JsonNode getMilestone19() {
+			return milestone19;
+		}
+
+		public void setMilestone19(JsonNode milestone19) {
+			this.milestone19 = milestone19;
+		}
+	    
+	    
 }
