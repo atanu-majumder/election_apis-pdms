@@ -74,15 +74,23 @@ public class AuthServiceImpl implements AuthService {
 		// 4. Get Active user
 		UserDetail user = userDetailRepository.findByMobileNo(mobileNo, true)
 				.orElseThrow(() -> new RuntimeException("Active user not found"));
+		
+		PollingStationVsSeat pollingStationVsSeat = pollingStationVsSeatRepository.findByPollingStationIdAndSeatNo(user.getPollingStationId(), 1)
+				.orElseThrow(() -> new RuntimeException("Polling Station not found"));;
 
 		// 5. Generate New JWT
-		String token = jwtService.generateToken(mobileNo, user.getPollingStationId(), user.getPollingStationName(), 
-				user.getBlockId(), user.getBlockName(), user.getElectionId(), user.getElectionName(),  
-				user.getDistrictId(), user.getDistrictName(), user.getId().intValue(), user.getEmpName(), 
-				user.getWardId(), user.getWardName());
+		//String token = jwtService.generateToken(mobileNo, user.getPollingStationId(), user.getPollingStationName(), 
+//				user.getBlockId(), user.getBlockName(), user.getElectionId(), user.getElectionName(),  
+//				user.getDistrictId(), user.getDistrictName(), user.getId().intValue(), user.getEmpName(), 
+//				user.getWardId(), user.getWardName());
+		
+		String token1 = jwtService.generateToken(mobileNo, user.getPollingStationId(), pollingStationVsSeat.getPollingStationName(), 
+				pollingStationVsSeat.getBlockId(), pollingStationVsSeat.getBlockName(), pollingStationVsSeat.getElectionId(), pollingStationVsSeat.getElectionName(),  
+				pollingStationVsSeat.getDistrictId(), pollingStationVsSeat.getDistrictName(), user.getId().intValue(), user.getEmpName(), 
+				pollingStationVsSeat.getWardId(), pollingStationVsSeat.getWardName());
 		
 		// 6. Get JTI from newly generated JWT
-        String jti = jwtService.extractJti(token);
+        String jti = jwtService.extractJti(token1);
 
         // 7. Save/replace current JWT session
         UserJwtSession session =
@@ -113,11 +121,11 @@ public class AuthServiceImpl implements AuthService {
                 .collect(Collectors.toList());
         
 		// 8. Return New JWT
-        LoginResponse response =  new LoginResponse(token,
+        LoginResponse response =  new LoginResponse(token1,
 				// "Bearer",
-				user.getPollingStationId(), user.getBlockId(), user.getElectionId(), 
-				user.getEmpName(), user.getDesignation(), user.getGender(), user.getPollingStationName(), 
-				user.getDistrictName(), user.getBlockName(), user.getWardId(), user.getWardName());
+				user.getPollingStationId(), pollingStationVsSeat.getBlockId(), pollingStationVsSeat.getElectionId(), 
+				user.getEmpName(), user.getDesignation(), user.getGender(), pollingStationVsSeat.getPollingStationName(), 
+				pollingStationVsSeat.getDistrictName(), pollingStationVsSeat.getBlockName(), pollingStationVsSeat.getWardId(), pollingStationVsSeat.getWardName());
         
         response.setSeatNos(seatNos);
         return response;

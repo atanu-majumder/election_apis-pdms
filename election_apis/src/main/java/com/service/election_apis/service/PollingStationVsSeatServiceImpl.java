@@ -24,4 +24,10 @@ public class PollingStationVsSeatServiceImpl implements PollingStationVsSeatServ
 
 	        return repository.findByPollingStationId(pollingStationId);
 	    }
+
+		@Override
+		public PollingStationVsSeat getbyPollingStationIdAndseatNo(Integer pollingStationId, Integer seatNo) {
+			// TODO Auto-generated method stub
+			return repository.findByPollingStationIdAndSeatNo(pollingStationId, seatNo).orElse(null);
+		}
 }
